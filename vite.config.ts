@@ -6,13 +6,23 @@ import UnoCSS from 'unocss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   base: 'lonss',
-  plugins: [
-    vue(),
-    UnoCSS()
-  ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/index.scss";`
+      }
+    }
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
     }
-  }
+  },
+  server: {
+    host: true
+  },
+  plugins: [
+    vue(),
+    UnoCSS()
+  ],
 })
